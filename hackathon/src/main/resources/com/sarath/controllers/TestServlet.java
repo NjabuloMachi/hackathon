@@ -6,8 +6,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/hello")
 public class TestServlet {
-   @RequestMapping(value = "/getHello")
+	@RequestMapping(method = RequestMethod.GET)
    public String printHello(Model  model) {
       model.addAttribute("message", "Hello Spring MVC Framework!");
       return "hello";
