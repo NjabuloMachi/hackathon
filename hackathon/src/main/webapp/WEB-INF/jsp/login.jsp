@@ -12,10 +12,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 
-
-
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
@@ -29,15 +26,18 @@
 		<a href="#" class="brand-logo">PlugPlay</a>
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
 			<li class="active"><a href="#">LogIn</a></li>
-			<li><a href="#">Register</a></li>
+			<li><a href="register">Register</a></li>
 		</ul>
 	</div>
 	</nav>
 
 	<br />
 
+	<p style="color: red; margin-left: 20px;">${message}</p>
+
 	<div class="row">
-		<form:form modelAttribute="login" action="loginProcess" method="post" class="col s12">
+		<form:form modelAttribute="login" action="loginProcess" method="post"
+			class="col s12">
 			<div class="row">
 				<div class="input-field col s4">
 					<form:input path="username" placeholder="User Name" id="first_name"
@@ -53,6 +53,11 @@
 					<label for="password">Password</label>
 				</div>
 			</div>
+
+			<form:button class="btn waves-effect waves-light" type="submit"
+				name="action">
+				Submit 
+			</form:button>
 
 		</form:form>
 	</div>

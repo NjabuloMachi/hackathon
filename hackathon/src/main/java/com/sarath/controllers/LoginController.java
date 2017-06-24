@@ -11,11 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.sarath.bean.Login;
+import com.sarath.service.LoginService;
 
 
 @Controller
 @EnableWebMvc
-public class TestServlet {
+public class LoginController {
 
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -29,7 +30,21 @@ public class TestServlet {
 	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("login") Login login) {
+		
 		ModelAndView mav = null;
+		
+		if(LoginService.validateUser(login))
+		{
+			mav = new ModelAndView("welcome");
+			mav.addObject("username", login.getUsername());
+		}
+		else
+		{
+			mav = new ModelAndView("login");
+			mav.addObject("message", "Username or Password is wrong!!");
+		}
+		
+		
 		/*User user = userService.validateUser(login);
 		if (null != user) {
 			mav = new ModelAndView("welcome");
@@ -38,7 +53,6 @@ public class TestServlet {
 			mav = new ModelAndView("login");
 			mav.addObject("message", "Username or Password is wrong!!");
 		}*/
-		
 		
 		return mav;
 	}
